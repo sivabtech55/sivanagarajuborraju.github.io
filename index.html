@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sivanagaraju Borraju | Data Engineer</title>
+<meta name="description" content="Sivanagaraju Borraju: Data Engineer with 5+ years building enterprise data pipelines on Azure Databricks, Spark, Snowflake, Kafka and Airflow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1016;
+    --bg-2: #111923;
+    --card: #141e2a;
+    --line: #22303f;
+    --text: #e6edf3;
+    --muted: #8b9bb0;
+    --accent: #3ee0b0;
+    --accent-2: #5aa9ff;
+    --bronze: #cd7f32;
+    --silver: #b8c4d0;
+    --gold: #f2c14e;
+    --radius: 14px;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --sans: "Space Grotesk", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 16, 22, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+  .logo { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .nav-links { display: flex; gap: 24px; font-size: 0.95rem; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  header { padding: 96px 0 72px; position: relative; }
+  .grid-bg {
+    position: absolute; inset: 0; z-index: -1;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at 30% 20%, black 10%, transparent 70%);
+    opacity: 0.45;
+  }
+  .eyebrow { font-family: var(--mono); color: var(--accent); font-size: 0.9rem; margin-bottom: 16px; }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05; letter-spacing: -0.02em; }
+  h1 span { color: var(--muted); display: block; font-weight: 400; }
+  .lede { max-width: 640px; margin-top: 22px; color: var(--muted); font-size: 1.1rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn {
+    padding: 12px 22px; border-radius: 999px; font-weight: 500;
+    border: 1px solid var(--line); transition: 0.2s;
+  }
+  .btn.primary { background: var(--accent); color: #062019; border-color: var(--accent); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:not(.primary):hover { border-color: var(--accent); color: var(--accent); }
+
+  /* PIPELINE VISUAL */
+  .pipeline {
+    margin-top: 56px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+    font-family: var(--mono); font-size: 0.85rem;
+  }
+  .stage {
+    padding: 10px 16px; border-radius: 10px; background: var(--card);
+    border: 1px solid var(--line);
+  }
+  .stage.bronze { border-color: var(--bronze); color: var(--bronze); }
+  .stage.silver { border-color: var(--silver); color: var(--silver); }
+  .stage.gold { border-color: var(--gold); color: var(--gold); }
+  .arrow { color: var(--muted); position: relative; width: 36px; height: 2px; background: var(--line); overflow: hidden; }
+  .arrow::after {
+    content: ""; position: absolute; top: 0; left: -12px; width: 12px; height: 2px;
+    background: var(--accent); animation: flow 1.6s linear infinite;
+  }
+  @keyframes flow { to { left: 36px; } }
+
+  /* SECTIONS */
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .sec-label { font-family: var(--mono); color: var(--accent); font-size: 0.85rem; margin-bottom: 8px; }
+  h2 { font-size: 2rem; letter-spacing: -0.01em; margin-bottom: 32px; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px;
+  }
+  .stat b { display: block; font-size: 2rem; color: var(--accent); font-weight: 700; }
+  .stat span { color: var(--muted); font-size: 0.92rem; }
+
+  /* ABOUT */
+  .about p { color: var(--muted); max-width: 760px; font-size: 1.05rem; }
+  .about p + p { margin-top: 14px; }
+
+  /* SKILLS */
+  .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .skill-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px;
+  }
+  .skill-card h3 { font-size: 1rem; margin-bottom: 12px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono); font-size: 0.78rem; padding: 4px 10px;
+    border-radius: 6px; background: var(--bg-2); border: 1px solid var(--line); color: var(--muted);
+  }
+
+  /* EXPERIENCE */
+  .job {
+    display: grid; grid-template-columns: 220px 1fr; gap: 28px;
+    padding: 28px 0; border-bottom: 1px dashed var(--line);
+  }
+  .job:last-child { border-bottom: none; }
+  .job-meta { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
+  .job-meta .co { display: block; font-family: var(--sans); font-size: 1.3rem; color: var(--text); font-weight: 700; margin-bottom: 4px; }
+  .job h3 { font-size: 1.15rem; margin-bottom: 12px; }
+  .job ul { list-style: none; }
+  .job li { position: relative; padding-left: 20px; color: var(--muted); margin-bottom: 10px; }
+  .job li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+  .job li strong { color: var(--text); font-weight: 500; }
+  .job .tags { margin-top: 16px; }
+
+  /* PROJECTS */
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .project {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px; display: flex; flex-direction: column; transition: 0.2s;
+  }
+  .project:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .project .icon { font-family: var(--mono); color: var(--accent-2); font-size: 0.8rem; margin-bottom: 12px; }
+  .project h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .project p { color: var(--muted); font-size: 0.95rem; flex: 1; }
+  .project .tags { margin-top: 16px; }
+
+  /* CERT / EDU */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .info-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .info-card h3 { font-size: 1.05rem; margin-bottom: 4px; }
+  .info-card p { color: var(--muted); font-size: 0.95rem; }
+  .info-card + .info-card { margin-top: 0; }
+  .stack > * + * { margin-top: 16px; }
+
+  /* CONTACT */
+  .contact { text-align: center; }
+  .contact h2 { margin-bottom: 14px; }
+  .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 28px; }
+  .contact .cta { justify-content: center; }
+
+  footer { padding: 32px 0; text-align: center; color: var(--muted); font-family: var(--mono); font-size: 0.8rem; border-top: 1px solid var(--line); }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .projects { grid-template-columns: 1fr; }
+    .skills, .two-col { grid-template-columns: 1fr; }
+    .job { grid-template-columns: 1fr; gap: 10px; }
+  }
+  @media (max-width: 560px) {
+    .nav-links { display: none; }
+    header { padding: 64px 0 48px; }
+    .stat b { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">&lt;siva.borraju /&gt;</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <p class="eyebrow">$ whoami</p>
+    <h1>Sivanagaraju Borraju<span>Data Engineer</span></h1>
+    <p class="lede">I build enterprise data pipelines that turn raw, messy data into trusted, analytics-ready datasets, using Azure Databricks, Spark, Snowflake, Kafka and Airflow.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:sivaborraju@gmail.com">Get in touch</a>
+      <a class="btn" href="https://linkedin.com/in/sivanagaraju09" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="#experience">View experience</a>
+    </div>
+
+    <div class="pipeline" aria-hidden="true">
+      <div class="stage">Kafka · APIs · RDBMS</div>
+      <div class="arrow"></div>
+      <div class="stage bronze">Bronze</div>
+      <div class="arrow"></div>
+      <div class="stage silver">Silver</div>
+      <div class="arrow"></div>
+      <div class="stage gold">Gold</div>
+      <div class="arrow"></div>
+      <div class="stage">Snowflake → Power BI</div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>5+</b><span>Years in data engineering</span></div>
+      <div class="stat"><b>50K/s</b><span>Events processed in streaming pipelines</span></div>
+      <div class="stat"><b>40%</b><span>Faster Spark production processing</span></div>
+      <div class="stat"><b>99%+</b><span>SLA compliance on orchestrated jobs</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <p class="sec-label">01 / about</p>
+    <h2>About me</h2>
+    <p>I'm a Data Engineer with 5+ years of experience designing and running enterprise data platforms. My work spans batch and streaming pipelines, dimensional modeling, data warehouse and data mart design, and the data quality and governance practices that make analytics trustworthy.</p>
+    <p>Currently at <strong style="color:var(--text)">AT&amp;T</strong>, I build Medallion-architecture pipelines on Azure Databricks and deliver curated Snowflake datasets that power Power BI reporting for business stakeholders. I hold a Master's in Computer Science from Lamar University and am a Microsoft Certified Fabric Data Engineer Associate.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="sec-label">02 / stack</p>
+    <h2>Technical skills</h2>
+    <div class="skills">
+      <div class="skill-card">
+        <h3>Programming &amp; Scripting</h3>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">numpy</span><span class="tag">scikit-learn</span>
+          <span class="tag">SQL</span><span class="tag">PySpark</span><span class="tag">Spark SQL</span><span class="tag">Java</span><span class="tag">Shell (UNIX/Linux)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Big Data &amp; ETL/ELT</h3>
+        <div class="tags">
+          <span class="tag">Apache Spark</span><span class="tag">Structured Streaming</span><span class="tag">Delta Lake</span>
+          <span class="tag">Hadoop</span><span class="tag">Hive</span><span class="tag">Data Lake</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Cloud Platforms</h3>
+        <div class="tags">
+          <span class="tag">Azure Databricks</span><span class="tag">Azure Data Factory</span><span class="tag">ADLS Gen2</span>
+          <span class="tag">Synapse</span><span class="tag">Unity Catalog</span><span class="tag">AWS EMR / S3 / Redshift</span>
+          <span class="tag">GCP BigQuery / Dataflow</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Orchestration &amp; Streaming</h3>
+        <div class="tags">
+          <span class="tag">Apache Airflow</span><span class="tag">Databricks Workflows</span><span class="tag">Apache Kafka</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Warehousing &amp; Modeling</h3>
+        <div class="tags">
+          <span class="tag">Snowflake</span><span class="tag">Star Schema</span><span class="tag">Fact &amp; Dimension Tables</span>
+          <span class="tag">Data Marts</span><span class="tag">Logical &amp; Physical Modeling</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Databases</h3>
+        <div class="tags">
+          <span class="tag">SQL Server</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span>
+          <span class="tag">MongoDB</span><span class="tag">Cassandra</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>DevOps &amp; CI/CD</h3>
+        <div class="tags">
+          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jenkins</span>
+          <span class="tag">Jira</span><span class="tag">Confluence</span><span class="tag">Agile / Scrum</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>BI, Governance &amp; AI</h3>
+        <div class="tags">
+          <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Data Quality Frameworks</span>
+          <span class="tag">Data Governance</span><span class="tag">GitHub Copilot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="sec-label">03 / experience</p>
+    <h2>Where I've worked</h2>
+
+    <div class="job">
+      <div class="job-meta">
+        <span class="co">AT&amp;T</span>
+        Aug 2023 – Present<br>Dallas, TX
+      </div>
+      <div>
+        <h3>Data Engineer</h3>
+        <ul>
+          <li>Architected ETL/ELT pipelines with <strong>Azure Databricks, PySpark, Spark SQL and ADF</strong>, turning structured and semi-structured data into curated Snowflake datasets.</li>
+          <li>Built <strong>Kafka + Spark Structured Streaming</strong> pipelines processing <strong>50K events/sec</strong> and 5TB of CRM, billing and payment data, improving job performance by <strong>35%</strong>.</li>
+          <li>Engineered <strong>bronze, silver and gold layers</strong> on Delta Lake using Medallion Architecture with standardized transformation rules.</li>
+          <li>Designed logical and physical data models and built <strong>subject-area data marts in Snowflake</strong> for Power BI dashboards.</li>
+          <li>Tuned Spark with partitioning, broadcast joins, caching and AQE, cutting production processing time by <strong>40%</strong>.</li>
+          <li>Implemented data quality checks, reconciliation and schema validation, reducing downstream reporting issues by <strong>30%</strong>.</li>
+          <li>Applied <strong>Unity Catalog</strong> for access governance, lineage and metadata; orchestrated jobs with Airflow and Databricks Workflows at <strong>99%+ SLA</strong>.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Databricks</span><span class="tag">Kafka</span><span class="tag">Delta Lake</span><span class="tag">Snowflake</span>
+          <span class="tag">Airflow</span><span class="tag">Unity Catalog</span><span class="tag">Jenkins</span><span class="tag">Power BI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-meta">
+        <span class="co">Infosys</span>
+        Apr 2020 – Dec 2022<br>India
+      </div>
+      <div>
+        <h3>Data Engineer</h3>
+        <ul>
+          <li>Built ETL/ELT pipelines with <strong>PySpark, Python, SQL, ADF and Snowflake</strong>, delivering curated data for BI and reporting.</li>
+          <li>Designed <strong>dimensional models</strong> with fact and dimension tables and PK/FK relational structures for enterprise analytics.</li>
+          <li>Integrated REST APIs, JSON, flat files and MySQL/PostgreSQL (JDBC) into ADLS and Snowflake.</li>
+          <li>Developed <strong>reusable PySpark and SQL transformation frameworks</strong>, reducing duplicated engineering effort.</li>
+          <li>Modernized legacy pipelines by migrating workloads to <strong>Azure Databricks and ADLS</strong> while keeping production stable.</li>
+          <li>Automated orchestration with Airflow and CI/CD with Git and Jenkins across environments.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">PySpark</span><span class="tag">ADF</span><span class="tag">Snowflake</span><span class="tag">Airflow</span>
+          <span class="tag">ADLS Gen2</span><span class="tag">Synapse</span><span class="tag">Jenkins</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="sec-label">04 / highlights</p>
+    <h2>Featured work</h2>
+    <div class="projects">
+      <div class="project">
+        <div class="icon">// streaming</div>
+        <h3>Real-Time Telecom Event Pipeline</h3>
+        <p>Kafka and Spark Structured Streaming pipeline ingesting CRM, billing and payment events at 50K events/sec, enabling near-real-time analytics.</p>
+        <div class="tags"><span class="tag">Kafka</span><span class="tag">Spark</span><span class="tag">Delta Lake</span></div>
+      </div>
+      <div class="project">
+        <div class="icon">// lakehouse</div>
+        <h3>Medallion Lakehouse &amp; Data Marts</h3>
+        <p>Bronze/silver/gold Delta Lake layers feeding subject-area Snowflake data marts and Power BI dashboards for business stakeholders.</p>
+        <div class="tags"><span class="tag">Databricks</span><span class="tag">Snowflake</span><span class="tag">Power BI</span></div>
+      </div>
+      <div class="project">
+        <div class="icon">// data quality</div>
+        <h3>Data Quality &amp; Governance Framework</h3>
+        <p>Automated reconciliation, schema validation and duplicate detection with Unity Catalog governance, cutting reporting issues by 30%.</p>
+        <div class="tags"><span class="tag">PySpark</span><span class="tag">Unity Catalog</span><span class="tag">Airflow</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="two-col">
+      <div class="stack">
+        <p class="sec-label">05 / certification</p>
+        <div class="info-card">
+          <h3>Microsoft Certified: Fabric Data Engineer Associate</h3>
+          <p>DP-700</p>
+        </div>
+      </div>
+      <div class="stack">
+        <p class="sec-label">06 / education</p>
+        <div class="info-card">
+          <h3>Master's in Computer Science</h3>
+          <p>Lamar University, Beaumont, TX</p>
+        </div>
+        <div class="info-card">
+          <h3>Bachelor's in Computer Science</h3>
+          <p>Vignan's Lara Institute of Technology &amp; Science, India</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="sec-label">07 / contact</p>
+    <h2>Let's build something with data</h2>
+    <p>Open to Data Engineering opportunities. The fastest way to reach me is email or LinkedIn.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:sivaborraju@gmail.com">sivaborraju@gmail.com</a>
+      <a class="btn" href="https://linkedin.com/in/sivanagaraju09" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/sivabtech55" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="yr"></span> Sivanagaraju Borraju · Built with HTML &amp; CSS · Hosted on GitHub Pages
+</footer>
+
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
